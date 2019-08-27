@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
+            app:startDestination="@id/allCharactersFragment">
+
+    <fragment android:id="@+id/allCharactersFragment"
+              android:name="com.apdallahy3.marvelcharcters.allCharacters.AllCharactersFragment"
+              android:label="fragment_all_characters" tools:layout="@layout/fragment_all_characters">
+        <action android:id="@+id/action_allCharactersFragment_to_characterDetailsFragment"
+                app:destination="@id/characterDetailsFragment"/>
+    </fragment>
+    <fragment android:id="@+id/characterDetailsFragment"
+              android:name="com.apdallahy3.marvelcharcters.CharacterDetails.CharacterDetailsFragment"
+              android:label="fragment_character_details" tools:layout="@layout/fragment_character_details"/>
+</navigation>
