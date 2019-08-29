@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
 
         tools:context="com.apdallahy3.marvelcharcters.allCharacters.AllCharactersFragment">
 
@@ -10,10 +10,40 @@
                 type="com.apdallahy3.marvelcharcters.allCharacters.charactersViewModel"
         />
     </data>
-    <TextView
-            android:layout_height="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:text="@{viewmodel.statues}"
-            android:textSize="25sp"
-    />
+            android:layout_height="match_parent"
+            android:background="#fff">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/characters_list"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:spanCount="1"
+                tools:itemCount="16"
+                app:recyclerData="@{viewmodel.characterList}"
+                tools:listitem="@layout/charcter_list_item"/>
+        <ImageView
+                android:id="@+id/status_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:apiStatues="@{viewmodel.statues}"
+        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--<TextView-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:text="@{viewmodel.statues}"-->
+    <!--android:textSize="25sp"-->
+    <!--/>-->
 </layout>

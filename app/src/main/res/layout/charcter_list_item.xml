@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="characterItem" type="com.apdallahy3.marvelcharcters.Network.Models.CharacterItem"/>
+    </data>
+
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item"
+            android:gravity="center|left"
+            android:paddingLeft="8dp"
+            android:paddingTop="2dp"
+            android:orientation="vertical">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ImageView
+                    android:layout_width="94dp"
+                    android:layout_height="110dp"
+                    android:id="@+id/character_image"
+                    android:scaleType="fitXY"
+                    app:imageUrl="@{characterItem.thumbnail.path+`/portrait_amazing.`+characterItem.thumbnail.extension}"
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/ic_launcher"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/character_name"
+                    android:text="@{characterItem.name}"
+                    android:gravity="left"
+                    android:textColor="#000"
+                    android:layout_marginLeft="16dip"
+                    android:layout_gravity="center_vertical"
+                    android:padding="2dip"
+            />
+        </LinearLayout>
+
+        <View
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D5D0D0"/>
+    </LinearLayout>
+
+</layout>

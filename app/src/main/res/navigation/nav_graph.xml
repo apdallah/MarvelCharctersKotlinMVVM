@@ -8,9 +8,15 @@
               android:name="com.apdallahy3.marvelcharcters.allCharacters.AllCharactersFragment"
               android:label="fragment_all_characters" tools:layout="@layout/fragment_all_characters">
         <action android:id="@+id/action_allCharactersFragment_to_characterDetailsFragment"
-                app:destination="@id/characterDetailsFragment"/>
+                app:destination="@id/characterDetailsFragment" app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left" app:popEnterAnim="@anim/slide_in_right"
+                app:popExitAnim="@anim/slide_out_left"/>
     </fragment>
     <fragment android:id="@+id/characterDetailsFragment"
               android:name="com.apdallahy3.marvelcharcters.CharacterDetails.CharacterDetailsFragment"
-              android:label="fragment_character_details" tools:layout="@layout/fragment_character_details"/>
+              android:label="fragment_character_details" tools:layout="@layout/fragment_character_details">
+        <argument
+                android:name="selectedCharacter"
+                app:argType="com.apdallahy3.marvelcharcters.Network.Models.CharacterItem"/>
+    </fragment>
 </navigation>

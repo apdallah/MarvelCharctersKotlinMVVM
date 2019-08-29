@@ -1,7 +1,7 @@
 package com.apdallahy3.marvelcharcters.Network
 
-import android.util.Log
-import com.apdallahy3.marvelcharcters.Network.Models.CharacterProperty
+import com.apdallahy3.marvelcharcters.Network.Models.CharactersResponse
+import com.apdallahy3.marvelcharcters.Network.DetailsModel.DetailsResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -11,6 +11,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 import java.util.concurrent.TimeUnit
 
@@ -21,8 +22,8 @@ private val client = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor()
         .apply
         { HttpLoggingInterceptor.Level.BODY })
-         .readTimeout(60, TimeUnit.SECONDS)
-         .connectTimeout(60, TimeUnit.SECONDS)
+    .readTimeout(60, TimeUnit.SECONDS)
+    .connectTimeout(60, TimeUnit.SECONDS)
 
 
 private val retrofit = Retrofit.Builder()
@@ -38,9 +39,23 @@ interface MarvelServiceApi {
     fun getCharacters(
         @Query("apikey") apikey: String,
         @Query("hash") hash: String,
+        @Query("ts") ts: String,
+        @Query("offset") offset: Int
+    ):
+            Deferred<CharactersResponse>
+
+    @GET("characters/{id}/{details}")
+    fun getDetails(
+
+        @Path("id") id: Int,
+        @Path("details") details: String,
+        @Query("apikey") apikey: String,
+        @Query("hash") hash: String,
         @Query("ts") ts: String
     ):
-            Deferred<List<CharacterProperty>>
+            Deferred<DetailsResponse>
+
+
 }
 
 object MarvelAPI {
